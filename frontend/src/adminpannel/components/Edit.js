@@ -99,23 +99,23 @@ const Edit = () => {
                 <div className="row">
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputproducttype1" className="form-label">Product Code</label>
-                        <input type="number" value={inpval.name} onChange={setdata} name="name" className="form-control" id="exampleInputname"  />
+                        <input type="number" value={inpval.name} onChange={setdata} name="name" className="form-control" id="exampleInputname" required  />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label className="form-label">producttype</label>
-                        <input type="text" value={inpval.producttype} onChange={setdata} name="producttype" className="form-control" id="exampleInputproductype" />
+                        <input type="text" value={inpval.producttype} onChange={setdata} name="producttype" className="form-control" required  id="exampleInputproductype" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label className="form-label">productitle</label>
-                        <input type="text" value={inpval.productitle} onChange={setdata} name="productitle" className="form-control" id="exampleInputproducttitle" />
+                        <input type="text" value={inpval.productitle} onChange={setdata} name="productitle" className="form-control" required id="exampleInputproducttitle" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label className="form-label">totalstock</label>
-                        <input type="number" value={inpval.totalstock} onChange={setdata} name="totalstock" className="form-control" id="exampleInputtotalstock" />
+                        <input type="number" value={inpval.totalstock} onChange={setdata} name="totalstock" className="form-control" required  id="exampleInputtotalstock" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label className="form-label">costperitem</label>
-                        <input type="number" value={inpval.costperitem} onChange={setdata} name="costperitem" className="form-control" id="exampleInputcostperitem" />
+                        <input type="number" value={inpval.costperitem} onChange={setdata} name="costperitem" className="form-control" required  id="exampleInputcostperitem" />
                     </div>
                    
                     <div className="mb-3 col-lg-12 col-md-12 col-12">

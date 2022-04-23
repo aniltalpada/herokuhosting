@@ -34,7 +34,7 @@ const Register = () => {
 
         const { name, producttype, producttitle, totalstock, costperitem, desc } = inpval;
 
-        const res = await fetch("https://crudappreactjs.herokuapp.com/register", {
+        const res = await fetch("https://psms-web.herokuapp.com/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -5,7 +5,6 @@ import dental from "../images/dental.jpg";
 import fracture from "../images/Fracture.jpg";
 import womensCare from "../images/womens.jpg";
 
-
 const productsData = [
     {
         id: "1",

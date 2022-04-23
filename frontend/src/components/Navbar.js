@@ -59,8 +59,13 @@ const Navbar = ({ click }) => {
             </span>
           </Link>
         </li>
+        <li> <Link to="/login">
+        <span>
+              Logout
+            </span>
+          </Link>   
+                        </li>
       </ul>
-
 
       <ul className="navbar__links">
 

@@ -32,7 +32,7 @@ import MedicineReport from './adminpannel/components/MedicineReport';
 import Register from './adminpannel/components/Register';
 import Edit from './adminpannel/components/Edit';
 import Details from './adminpannel/components/Details';
-
+import Login from './Login';
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -45,6 +45,7 @@ function App() {
       <main className="app">
         <Switch>
           <Route exact path="/" component={MainScreen} />
+          <Route exact path="/Login" component={Login} />
           <Route exact path="/allProducts" component={AllProductsScreen} />
           <Route exact path="/product" component={HomeScreen} />
           <Route exact path="/product/:id" component={ProductScreen} />
