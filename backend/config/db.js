@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const DB = "mongodb://localhost:27017/psms"
+const DB = "mongodb+srv://psms:psms5259@cluster0.n1eyz.mongodb.net/psms?retryWrites=true&w=majority"
 const connectDB = async () => {
   try {
     await mongoose.connect(DB, {
