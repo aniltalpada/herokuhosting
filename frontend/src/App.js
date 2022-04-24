@@ -29,9 +29,15 @@ import AdminScreen from "./screens/AdminScreen";
 //adminpannel
 
 import MedicineReport from './adminpannel/components/MedicineReport';
-import Register from './adminpannel/components/Register';
+import AddMedicine from './adminpannel/components/AddMedicine';
 import Edit from './adminpannel/components/Edit';
 import Details from './adminpannel/components/Details';
+
+import SellsReport from './customer/SellsReport';
+import AddSells from './customer/AddSells';
+import EditSell from './customer/EditSells';
+import SellsDetails from './customer/SellsDetails';
+
 import Login from './Login';
 
 function App() {
@@ -60,9 +66,14 @@ function App() {
           <Route exact path="/cart" component={CartScreen} />
 
       <Route exact path="/MedicineReport" component={MedicineReport} />
-      <Route exact path="/register" component={Register} />
+      <Route exact path="/AddMedicine" component={AddMedicine} />
       <Route exact path="/edit/:id" component={Edit} />
       <Route exact path="/view/:id" component={Details} />
+
+      <Route exact path="/SellsReport" component={SellsReport} />
+      <Route exact path="/AddSells" component={AddSells} />
+      <Route exact path="/edit-sell/:id" component={EditSell} />
+      <Route exact path="/view-sell/:id" component={SellsDetails} />
         </Switch>
       </main>
       <Footer />

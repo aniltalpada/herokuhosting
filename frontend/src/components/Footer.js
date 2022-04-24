@@ -14,8 +14,8 @@ function Footer() {
                     <div className="col-sm-6 col-md-3 item">
                         <h3>About</h3>
                         <ul>
-                            <li><NavLink exact to="/about">About</NavLink></li>
-                            <li><NavLink exact to="#">Contact Us</NavLink></li>
+                            <li><NavLink exact to="/MedicineReport">Medicine Report</NavLink></li>
+                            <li><NavLink exact to="/about">About Us</NavLink></li>
                            
                         </ul>
                     </div>

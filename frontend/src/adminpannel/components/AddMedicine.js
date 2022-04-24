@@ -1,16 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { NavLink, useParams,useHistory } from 'react-router-dom'
-import { updatedata } from './context/ContextProvider'
+import React, { useContext, useState } from 'react'
+import { NavLink, useHistory } from 'react-router-dom'
+import { adddata } from './context/ContextProvider';
 
+const Register = () => {
 
-const Edit = () => {
+    const { udata, setUdata } = useContext(adddata);
 
-    // const [getuserdata, setUserdata] = useState([]);
-    // console.log(getuserdata);
-
-   const {updata, setUPdata} = useContext(updatedata)
-
-    const history = useHistory("");
+    const history = useHistory();
 
     const [inpval, setINP] = useState({
         name: "",
@@ -18,6 +14,7 @@ const Edit = () => {
         age: "",
         mobile: "",
         work: "",
+        add: "",
         desc: ""
     })
 
@@ -33,18 +30,19 @@ const Edit = () => {
     }
 
 
-    const { id } = useParams("");
-    console.log(id);
+    const addinpdata = async (e) => {
+        e.preventDefault();
 
+        const { name, email, work, add, mobile, desc, age } = inpval;
 
-
-    const getdata = async () => {
-
-        const res = await fetch(`https://crudappreactjs.herokuapp.com/getuser/${id}`, {
-            method: "GET",
+        const res = await fetch("https://crudappreactjs.herokuapp.com/register", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify({
+                name, email, work, add, mobile, desc, age
+            })
         });
 
         const data = await res.json();
@@ -52,56 +50,31 @@ const Edit = () => {
 
         if (res.status === 422 || !data) {
             console.log("error ");
+            alert("error status 422");
 
         } else {
-            setINP(data)
-            console.log("get data");
-
-        }
-    }
-
-    useEffect(() => {
-        getdata();
-    }, []);
-
-
-    const updateuser = async(e)=>{
-        e.preventDefault();
-
-        const {name,email,work,mobile,desc,age} = inpval;
-
-        const res2 = await fetch(`https://crudappreactjs.herokuapp.com/updateuser/${id}`,{
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body:JSON.stringify({
-                name,email,work,mobile,desc,age
-            })
-        });
-
-        const data2 = await res2.json();
-        console.log(data2);
-
-        if(res2.status === 422 || !data2){
-            alert("fill the data");
-        }else{
             history.push("/")
-            setUPdata(data2);
-        }
+            setUdata(data)
+            console.log("data added");
 
+        }
     }
 
     return (
         <div className="container">
-            <NavLink to="/">home2</NavLink>
+            <NavLink to="/">home</NavLink>
             <form className="mt-4">
                 <div className="row">
+                   
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputEmail1" class="form-label">Product Code</label>
-                        <input type="number" value={inpval.name} onChange={setdata} name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <input type="number" value={inpval.name} onChange={setdata} name="name" class="form-control" id="exampleInputEmail1" />
                     </div>
-                    <div>
+                    {/* <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">Product Type</label>
+                        <input type="text" value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1" />
+                    </div> */}
+                     <div>
                         <label label for="exampleInputEmail1" class="form-label"> Product Type </label>
                         <select value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1">
                             <option value="" selected disabled hidden>Choose here</option>
@@ -113,10 +86,6 @@ const Edit = () => {
                             <option value="Injection">Injection</option>
                         </select>
                     </div>
-                    {/* <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Product Type</label>
-                        <input type="text" value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1" />
-                    </div> */}
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputPassword1" class="form-label">Product Title</label>
                         <input type="text" value={inpval.age} onChange={setdata} name="age" class="form-control" id="exampleInputPassword1" />
@@ -129,21 +98,27 @@ const Edit = () => {
                         <label for="exampleInputPassword1" class="form-label">Cost Per Item</label>
                         <input type="number" value={inpval.work} onChange={setdata} name="work" class="form-control" id="exampleInputPassword1" />
                     </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">Currancy</label>
+                        <input type="text" value={inpval.add} onChange={setdata} name="add" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    {/* <div>
+                        <label label for="exampleInputEmail1" class="form-label"> Currancy </label>
+                        <select value={inpval.add} onChange={setdata} name="add" class="form-control" id="exampleInputPassword1">
+                            <option value="" selected disabled hidden>Choose here</option>
+                            <option value="INR">INR</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </div> */}
                     <div class="mb-3 col-lg-12 col-md-12 col-12">
                         <label for="exampleInputPassword1" class="form-label">Description</label>
                         <textarea name="desc" value={inpval.desc} onChange={setdata} className="form-control" id="" cols="30" rows="5"></textarea>
                     </div>
 
-                    <button type="submit" onClick={updateuser} class="btn btn-primary">Submit</button>
+                    <button type="submit" onClick={addinpdata} class="btn btn-primary">Add Medicine</button>
                 </div>
             </form>
         </div>
     )
 }
-
-export default Edit;
-
-
-
-
-
+export default Register;

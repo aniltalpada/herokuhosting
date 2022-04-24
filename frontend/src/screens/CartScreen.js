@@ -1,3 +1,4 @@
+
 import "../styles/CartScreen.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -96,7 +97,6 @@ const CartScreen = () => {
           <div className="cartscreen__info">
             <p>Subtotal ({getCartCount()}) items</p>
             <p>TOTAL(INR) : ₹{getCartSubTotal()} </p>
-            <p>TOTAL(USD) : ${getCartSubTotal() * 0.014} </p>
           </div>
           <div>
             <button type="button" onClick={function() {

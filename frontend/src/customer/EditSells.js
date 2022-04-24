@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useParams,useHistory } from 'react-router-dom'
-import { updatedata } from './context/ContextProvider'
+import { updatedata } from './context/ContextProvider2'
 
 
 const Edit = () => {
@@ -18,6 +18,7 @@ const Edit = () => {
         age: "",
         mobile: "",
         work: "",
+        add: "",
         desc: ""
     })
 
@@ -68,15 +69,15 @@ const Edit = () => {
     const updateuser = async(e)=>{
         e.preventDefault();
 
-        const {name,email,work,mobile,desc,age} = inpval;
+        const {name,email,work,add,mobile,desc,age} = inpval;
 
-        const res2 = await fetch(`https://crudappreactjs.herokuapp.com/updateuser/${id}`,{
+        const res2 = await fetch(`https://crudappreactjs.herokuapp.com/updateuser2/${id}`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
             body:JSON.stringify({
-                name,email,work,mobile,desc,age
+                name,email,work,add,mobile,desc,age
             })
         });
 
@@ -97,41 +98,34 @@ const Edit = () => {
             <NavLink to="/">home2</NavLink>
             <form className="mt-4">
                 <div className="row">
-                    <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputEmail1" class="form-label">Product Code</label>
-                        <input type="number" value={inpval.name} onChange={setdata} name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    </div>
-                    <div>
-                        <label label for="exampleInputEmail1" class="form-label"> Product Type </label>
-                        <select value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1">
-                            <option value="" selected disabled hidden>Choose here</option>
-                            <option value="Capsule">Capsule</option>
-                            <option value="Tablet">Tablet</option>
-                            <option value="Liquid">Liquid</option>
-                            <option value="Drops">Drops</option>
-                            <option value="Suppositories">Suppositories</option>
-                            <option value="Injection">Injection</option>
-                        </select>
-                    </div>
-                    {/* <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Product Type</label>
-                        <input type="text" value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1" />
-                    </div> */}
-                    <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Product Title</label>
-                        <input type="text" value={inpval.age} onChange={setdata} name="age" class="form-control" id="exampleInputPassword1" />
+                <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputEmail1" class="form-label">Customer Name</label>
+                        <input type="text" value={inpval.name} onChange={setdata} name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                     </div>
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Total Stock</label>
+                        <label for="exampleInputPassword1" class="form-label">Email</label>
+                        <input type="email" value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">Mobile</label>
                         <input type="number" value={inpval.mobile} onChange={setdata} name="mobile" class="form-control" id="exampleInputPassword1" />
                     </div>
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Cost Per Item</label>
-                        <input type="number" value={inpval.work} onChange={setdata} name="work" class="form-control" id="exampleInputPassword1" />
+                        <label for="exampleInputPassword1" class="form-label">Product Type</label>
+                        <input type="text" value={inpval.age} onChange={setdata} name="age" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">Product Title</label>
+                        <input type="text" value={inpval.work} onChange={setdata} name="work" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">Quantity</label>
+                        <input type="number" value={inpval.add} onChange={setdata} name="add" class="form-control" id="exampleInputPassword1" />
                     </div>
                     <div class="mb-3 col-lg-12 col-md-12 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Description</label>
-                        <textarea name="desc" value={inpval.desc} onChange={setdata} className="form-control" id="" cols="30" rows="5"></textarea>
+                        <label for="exampleInputPassword1" class="form-label">Price</label>
+                        <input type="number" value={inpval.desc} onChange={setdata} name="desc" class="form-control" id="exampleInputPassword1" />
+                        {/* <textarea name="desc" value={inpval.desc} onChange={setdata} className="form-control" id="" cols="30" rows="5"></textarea> */}
                     </div>
 
                     <button type="submit" onClick={updateuser} class="btn btn-primary">Submit</button>

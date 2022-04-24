@@ -39,6 +39,13 @@ const Navbar = ({ click }) => {
           </Link>
         </li>
         <li>
+          <Link to="/AddMedicine" className="">
+            <span>
+              Add Medicine
+            </span>
+          </Link>
+        </li>
+        <li>
           <Link to="/MedicineReport" className="">
             <span>
               Medicine Report
@@ -46,16 +53,16 @@ const Navbar = ({ click }) => {
           </Link>
         </li>
         <li>
-          <Link to="/about" className="">
+          <Link to="/AddSells" className="">
             <span>
-              About Us
+            Add Sells
             </span>
           </Link>
         </li>
         <li>
-          <Link to="/contact" className="">
+          <Link to="/SellsReport" className="">
             <span>
-              Contact Us
+            Sells Report
             </span>
           </Link>
         </li>

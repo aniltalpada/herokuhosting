@@ -37,7 +37,12 @@
   align-items: center;
   margin-left: 8px;
 }
-
+.navbar__links > li > a:hover {
+  /* padding: 8px;
+  border-radius: 4px; */
+  /* background: #2ec8ea; */
+  color: #ffd30e;
+}
 .cart__link {
   background: #333;
   padding: 10px;

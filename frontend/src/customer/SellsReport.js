@@ -3,14 +3,13 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { NavLink } from 'react-router-dom';
-import { adddata, deldata } from './context/ContextProvider';
-import { updatedata } from './context/ContextProvider'
-import { textAlign } from '@mui/system';
+import { adddata, deldata } from './context/ContextProvider2';
+import { updatedata } from './context/ContextProvider2'
 
 
 
 
-const MedicineReport = () => {
+const Home = () => {
 
     const [getuserdata, setUserdata] = useState([]);
     console.log(getuserdata);
@@ -23,7 +22,7 @@ const MedicineReport = () => {
 
     const getdata = async () => {
 
-        const res = await fetch("https://crudappreactjs.herokuapp.com/getdata", {
+        const res = await fetch("https://crudappreactjs.herokuapp.com/getdata2", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -49,7 +48,7 @@ const MedicineReport = () => {
 
     const deleteuser = async (id) => {
 
-        const res2 = await fetch(`https://crudappreactjs.herokuapp.com/deleteuser/${id}`, {
+        const res2 = await fetch(`https://crudappreactjs.herokuapp.com/deleteuser2/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -105,21 +104,20 @@ const MedicineReport = () => {
 
             <div className="mt-5">
                 <div className="container">
-                    {/* <div className="add_btn mt-2 mb-2">
+                    <div className="add_btn mt-2 mb-2">
                         <NavLink to="/register" className="btn btn-primary">Add data</NavLink>
-                    </div> */}
+                    </div>
 
                     <table class="table">
                         <thead>
                             <tr className="table-dark">
                                 <th scope="col">id</th>
-                                <th scope="col">Product Code</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Product Type</th>
                                 <th scope="col">Product Title</th>
-                                <th scope="col">Total Stock</th>
-                                <th scope="col">Cost Per Item</th>
-                                <th scope="col">Description</th>
-                                <th scope="col" style={{textAlign:'center'}}>Action</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -132,12 +130,13 @@ const MedicineReport = () => {
                                                 <th scope="row">{id + 1}</th>
                                                 <td>{element.name}</td>
                                                 <td>{element.email}</td>
-                                                <td>{element.age}</td>
                                                 <td>{element.mobile}</td>
+                                                <td>{element.age}</td>
                                                 <td>{element.work}</td>
+                                                <td>{element.add}</td>
                                                 <td>{element.desc}</td>
                                                 <td className="d-flex justify-content-between">
-                                                    {/* <NavLink to={`view/${element._id}`}> <button className="btn btn-success"><RemoveRedEyeIcon /></button></NavLink> */}
+                                                    <NavLink to={`view/${element._id}`}> <button className="btn btn-success"><RemoveRedEyeIcon /></button></NavLink>
                                                     <NavLink to={`edit/${element._id}`}>  <button className="btn btn-primary"><CreateIcon /></button></NavLink>
                                                     <button className="btn btn-danger" onClick={() => deleteuser(element._id)}><DeleteOutlineIcon /></button>
                                                 </td>
@@ -156,7 +155,7 @@ const MedicineReport = () => {
     )
 }
 
-export default MedicineReport
+export default Home
 
 
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const users = require("../models/userSchema");
+const users = require("../models/userSchemaSells");
 
 
 
@@ -10,7 +10,7 @@ const users = require("../models/userSchema");
 
 // register user
 
-router.post("/register",async(req,res)=>{
+router.post("/register2",async(req,res)=>{
     // console.log(req.body);
     const {name,email,age,mobile,work,desc} = req.body;
 
@@ -43,7 +43,7 @@ router.post("/register",async(req,res)=>{
 
 // get userdata
 
-router.get("/getdata",async(req,res)=>{
+router.get("/getdata2",async(req,res)=>{
     try {
         const userdata = await users.find();
         res.status(201).json(userdata)
@@ -55,7 +55,7 @@ router.get("/getdata",async(req,res)=>{
 
 // get individual user
 
-router.get("/getuser/:id",async(req,res)=>{
+router.get("/getuser2/:id",async(req,res)=>{
     try {
         console.log(req.params);
         const {id} = req.params;
@@ -72,7 +72,7 @@ router.get("/getuser/:id",async(req,res)=>{
 
 // update user data
 
-router.patch("/updateuser/:id",async(req,res)=>{
+router.patch("/updateuser2/:id",async(req,res)=>{
     try {
         const {id} = req.params;
 
@@ -90,7 +90,7 @@ router.patch("/updateuser/:id",async(req,res)=>{
 
 
 // delete user
-router.delete("/deleteuser/:id",async(req,res)=>{
+router.delete("/deleteuser2/:id",async(req,res)=>{
     try {
         const {id} = req.params;
 
